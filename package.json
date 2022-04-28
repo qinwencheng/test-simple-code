@@ -1,0 +1,14 @@
+{
+  "name": "test-simple-code",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "vite": "^2.9.5",
+    "vitest": "^0.10.0"
+  }
+}

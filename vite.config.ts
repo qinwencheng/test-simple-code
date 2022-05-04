@@ -4,8 +4,7 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     includeSource: [
-      'code/**/*.{js,ts}',
-      // 'src/**/*.{ js, ts }'
+      'src/**/*.{js,ts}'
     ],
   }
 })

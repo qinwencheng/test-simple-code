@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+import { add } from './add'
 function isValid(s: string): boolean {
   const leftList: string[] = ['(', '{', '['];
   const rightList: string[] = [')', '}', ']'];
@@ -23,18 +24,23 @@ function isValid(s: string): boolean {
   }
   return !(nowStack.length);
 }
-export {isValid}
+export { isValid }
+console.log(isValid('()'), add(1,3))
 // @lc code=end
 
 // 内联测试
 if (import.meta.vitest) {
-  const { it, expect } = import.meta.vitest;
-  it('isValid', () => {
-    expect(isValid('()')).toBe(true);
-  });
-
-  it('isValid', () => {
-    expect(isValid('()()')).toBe(true);
+  const { it, expect, describe } = import.meta.vitest;
+  describe('test-isValid', () => {
+  
+    it('isValid', () => {
+      expect(isValid('()')).toBe(true);
+    });
+  
+    it('isValid', () => {
+      expect(isValid('()()')).toBe(true);
+    });
+  
   });
 }
 

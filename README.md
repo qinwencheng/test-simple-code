@@ -2,9 +2,11 @@
 
 ## about（关于）
 
-这个项目可以用来测试js与ts代码
+作用：可以用来运行、测试js与ts代码
 <br>
-以 `vite` 框架 + `vitest` 框架为基础，去除页面框架部分，只保留测试功能，便于测试短代码，例如leetcode代码等
+项目初衷是希望可以快速地运行ts代码，同时能够方便地对用同时写的leetcode代码进行本地测试
+<br>
+以 `vite` 框架 + `vitest` 框架为基础，去除页面框架部分，只保留测试功能，便于测试短代码。同时使用vite自带的esbuild对ts代码进行编译。
 具体使用可以参考[vitest官网](https://cn.vitest.dev/)
 
 ## use（使用方式）
@@ -15,21 +17,41 @@
 yarn
 ```
 
-### 测试能否使用
+### 验证能否使用
+
+#### 验证运行ts代码功能
+
+```bash
+yarn run_ts 20.ts
+```
+
+此时将会出现 `20.ts` 的运行结果为 `true 4`
+
+#### 验证测试功能
 
 ```bash
 yarn test
 ```
 
-此时将会自动测试`code/`目录下的 `20.ts` 文件和 `code/__test__` 目录下的 `20.test.ts` 文件，并显示测试通过
+此时将会自动测试`src/code/`目录下的 `20.ts` 文件和 `code/__test__` 目录下的 `20.test.ts` 文件，并显示测试通过
 
-### 编写代码并测试
+### 运行与测试代码
 
-默认情况下，运行 `yarn test` 只会测试 `code/` 文件夹中的文件，如果要更改测试目录，请更改 `vite.config.ts` 文件中的 `includeSource` 参数
+#### 运行代码
+
+默认情况下，命令 `yarn run_ts xxx.ts` 是以 `src/code` 为基准下的文件，当你想运行名称为 `src/code/test.ts` 的代码，直接输入 `yarn run_ts test.ts` 即可，如果想要运行路径为 `src/code/foo/test.ts` 或是 `src/code/one/two/test.js` 的代码，他们对应的命令应该是 `yarn run_ts /foo/test.ts /one/two/test.js` （没错，支持同时运行多个代码），如果想要修改基准路径，可以修改 `src/bin/constants.js` 文件
+
+#### 编译代码
+
+如果只希望编译代码，而不运行。可以使用 `yarn build_ts xxx.ts` 命令，用法和 `run_ts` 类似，同样可以一次编译多个代码。编译生成的代码在和scr平级的dist目录下（运行后dist目录会自动生成）不论是 `run_ts` 还是 `build_ts` 命令都会生成编译后的代码文件
+
+#### 测试代码
+
+默认情况下，运行 `yarn test` 只会测试 `src/code/` 文件夹中的文件，如果要更改测试目录，请更改 `vite.config.ts` 文件中的 `includeSource` 参数
 
 #### 内联代码测试
 
-写法参考官网和示例代码，需要注意的是，目前可能有个小bug还未解决，那就是在除了 `code/` 目录下写内联测试代码以外，写在其他目录， `import.meta.vitest` 可能会爆红，不过不会影响结果
+写法参考官网和示例代码`src/code/20.ts`
 
 #### 单独文件普通测试
 

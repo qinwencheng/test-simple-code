@@ -3,9 +3,13 @@
 ## about（关于）
 
 作用：可以用来运行、测试js与ts代码
+
 <br>
-项目初衷是希望可以快速地运行ts代码，同时能够方便地对用同时写的leetcode代码进行本地测试
+
+项目初衷是希望可以快速地运行ts代码，同时能够方便地对leetcode代码进行本地测试
+
 <br>
+
 以 `vite` 框架 + `vitest` 框架为基础，去除页面框架部分，只保留测试功能，便于测试短代码。同时使用vite自带的esbuild对ts代码进行编译。
 具体使用可以参考[vitest官网](https://cn.vitest.dev/)
 
@@ -45,12 +49,9 @@ yarn test
 
 如果只希望编译代码，而不运行。可以使用 `yarn build_ts xxx.ts` 命令，用法和 `run_ts` 类似，同样可以一次编译多个代码。编译生成的代码在和scr平级的dist目录下（运行后dist目录会自动生成）不论是 `run_ts` 还是 `build_ts` 命令都会生成编译后的代码文件
 
-#### 测试代码
-
-默认情况下，运行 `yarn test` 只会测试 `src/code/` 文件夹中的文件，如果要更改测试目录，请更改 `vite.config.ts` 文件中的 `includeSource` 参数
-
 #### 内联代码测试
 
+默认情况下，运行 `yarn test` 只会测试 `src/code/` 文件夹中的文件，如果要更改测试目录，请更改 `vite.config.ts` 文件中的 `includeSource` 参数
 写法参考官网和示例代码`src/code/20.ts`
 
 #### 单独文件普通测试
